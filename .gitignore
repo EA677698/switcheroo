@@ -87,6 +87,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 build/
+cmake-build-*
 
 ### CMake Patch ###
 CMakeUserPresets.json

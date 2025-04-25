@@ -21,7 +21,7 @@ namespace switcheroo::aarch64
     private:
         void split_instructions(const uint8_t *bin, size_t size);
 
-        void decode_main_group(const uint32_t instruction);
+        void first_dispatch(const uint32_t instruction); // Main group encoding
 
         size_t pc; // Program Counter
         std::vector<Instruction> *decoded_bin;
