@@ -1,20 +1,27 @@
-cmake_minimum_required(VERSION 3.27)
-project(Switcheroo)
+cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_CXX_STANDARD 17)
+project(Switcheroo LANGUAGES CXX)
 
-set(SOURCES "")
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_library(${PROJECT_NAME} STATIC ${SOURCES})
+add_library(switcheroo STATIC)
 
-target_include_directories(${PROJECT_NAME}
-    PUBLIC 
-        ${PROJECT_SOURCE_DIR}/include
+target_include_directories(switcheroo
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-#add_executable(${PROJECT_NAME} test.cpp)
+target_sources(switcheroo
+    PRIVATE
+        src/aarch64/decoder.cpp
+        src/aarch64/recompiler.cpp
+)
 
-#target_link_libraries( hello_binary
-#    PRIVATE 
-#        hello_library
-#)
+set_target_properties(switcheroo PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+include(GNUInstallDirs)
+install(TARGETS switcheroo
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

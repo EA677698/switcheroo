@@ -5,27 +5,27 @@
 #include <vector>
 #include "instruction.hpp"
 
-class Decoder
+namespace switcheroo::aarch64
 {
+    class Decoder
+    {
 
     public:
-
         Decoder();
-         ~Decoder() = default;
+        ~Decoder() = default;
 
-        void decode_bin(const uint8_t* bin, size_t size);
+        void decode_bin(const uint8_t *bin, size_t size);
 
-        std::vector<InstructionInfo>* get_instructions() const;
+        std::vector<Instruction> *get_instructions() const;
 
-        private:
-
-        void split_instructions(const uint8_t* bin, size_t size);
+    private:
+        void split_instructions(const uint8_t *bin, size_t size);
 
         void decode_main_group(const uint32_t instruction);
 
         size_t pc; // Program Counter
-        std::vector<InstructionInfo>* decoded_bin;
-
-};
+        std::vector<Instruction> *decoded_bin;
+    };
+}
 
 #endif // DECODER_HPP

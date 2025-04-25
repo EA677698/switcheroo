@@ -24,7 +24,7 @@ namespace recompiler
         
         const uint8_t* src_bin = nullptr;
         size_t src_bin_size = 0;
-        std::vector<InstructionInfo>* decoded_bin;
+        std::vector<switcheroo::aarch64::Instruction>* decoded_bin;
 
 
     };

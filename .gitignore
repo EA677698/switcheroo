@@ -114,5 +114,6 @@ CMakeUserPresets.json
 .ionide
 
 # Custom
+structure.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,cmake,visualstudiocode,c
